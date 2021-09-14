@@ -49,4 +49,108 @@ public class ListResult {
     private List<Product> products;
     /** Integration type used when creating the LIST session, always present */
     private String integrationType;
+
+    public Map<String, URL> getLinks() {
+        return links;
+    }
+
+    public void setLinks(Map<String, URL> links) {
+        this.links = links;
+    }
+
+    public String getResultInfo() {
+        return resultInfo;
+    }
+
+    public void setResultInfo(String resultInfo) {
+        this.resultInfo = resultInfo;
+    }
+
+    public Interaction getInteraction() {
+        return interaction;
+    }
+
+    public void setInteraction(Interaction interaction) {
+        this.interaction = interaction;
+    }
+
+    public List<AccountRegistration> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<AccountRegistration> accounts) {
+        this.accounts = accounts;
+    }
+
+    public Networks getNetworks() {
+        return networks;
+    }
+
+    public void setNetworks(Networks networks) {
+        this.networks = networks;
+    }
+
+    public ExtraElements getExtraElements() {
+        return extraElements;
+    }
+
+    public void setExtraElements(ExtraElements extraElements) {
+        this.extraElements = extraElements;
+    }
+
+    public PresetAccount getPresetAccount() {
+        return presetAccount;
+    }
+
+    public void setPresetAccount(PresetAccount presetAccount) {
+        this.presetAccount = presetAccount;
+    }
+
+    public String getOperationType() {
+        return operationType;
+    }
+
+    public void setOperationType(String operationType) {
+        this.operationType = operationType;
+    }
+
+    public Boolean getAllowDelete() {
+        return allowDelete;
+    }
+
+    public void setAllowDelete(Boolean allowDelete) {
+        this.allowDelete = allowDelete;
+    }
+
+    public Style getStyle() {
+        return style;
+    }
+
+    public void setStyle(Style style) {
+        this.style = style;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public String getIntegrationType() {
+        return integrationType;
+    }
+
+    public void setIntegrationType(String integrationType) {
+        this.integrationType = integrationType;
+    }
 }

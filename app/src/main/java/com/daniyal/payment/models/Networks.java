@@ -22,4 +22,20 @@ public class Networks {
     private List<ApplicableNetwork> applicable;
     /** Simple API, always present */
     private Date resourcesLastUpdate;
+
+    public List<ApplicableNetwork> getApplicable() {
+        return applicable;
+    }
+
+    public void setApplicable(List<ApplicableNetwork> applicable) {
+        this.applicable = applicable;
+    }
+
+    public Date getResourcesLastUpdate() {
+        return resourcesLastUpdate;
+    }
+
+    public void setResourcesLastUpdate(Date resourcesLastUpdate) {
+        this.resourcesLastUpdate = resourcesLastUpdate;
+    }
 }
