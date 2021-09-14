@@ -9,12 +9,13 @@ import android.widget.FrameLayout;
 
 import com.daniyal.payment.R;
 import com.daniyal.payment.ui.fragments.BaseFragment;
+import com.daniyal.payment.ui.fragments.PaymentOptionFragment;
 import com.daniyal.payment.ui.views.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
 
     public static final String KEY_FRAG_FIRST = "firstFrag";
     protected BaseFragment baseFragment;
@@ -27,8 +28,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
+        initFragment();
+
     }
 
     @Override
@@ -38,6 +40,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
+    }
+
+    private void initFragment(){
+        addDockableFragment(PaymentOptionFragment.newInstance());
     }
 
     /**
