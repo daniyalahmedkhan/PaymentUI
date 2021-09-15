@@ -31,5 +31,6 @@ ext{
     retrofitVersion = '2.9.0'
     gsonVersion = '2.8.7'
     loggingVersion = '4.2.2'
+    lottieVersion = '4.1.0'
 
 }

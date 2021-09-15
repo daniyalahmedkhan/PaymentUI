@@ -7,4 +7,36 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--<color name="colorPrimaryText">#AF000000</color>-->
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorSecondaryText">#82000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="black_opaq">#7b000000</color>
+    <color name="blue">#003656</color>
+    <!--<color name="app_button_color">#FF9800</color>-->
+
+
+    <color name="blue_onboarding">#41a9cc</color>
+    <color name="pink_onboarding">#e2615c</color>
+    <color name="purple_onboarding">#8a63b2</color>
+    <color name="colorRatingBar">#F1C40F</color>
+    <color name="colorLineChart">#FF41D6C7</color>
+
+
+    <!-- tellotalk colors -->
+    <color name="toolbar_color">#f36f21</color>
+    <color name="toolbar_title_text_color">#fdfdfc</color>
+    <!--    <color name="toolbar_title_text_color">#828282</color>-->
+    <color name="chat_bubble_right">#f36f21</color>
+    <color name="indicator">#f36f21</color>
+    <color name="float_buttons">#f36f21</color>
+
+
+    <!--    sasta tiket colors-->
+    <color name="flight_card_color">#fef3ec</color>
+    <color name="flight_text_color">#968893</color>
+    <color name="flight_text_color_light">#bcb0b4</color>
+    <color name="colorNotificationUnRead">#FFBB84</color>
 </resources>

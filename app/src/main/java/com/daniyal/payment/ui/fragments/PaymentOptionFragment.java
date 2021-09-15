@@ -36,7 +36,7 @@ public class PaymentOptionFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.payment_option_fragment, container, false);
+        return inflater.inflate(R.layout.payment_card_item, container, false);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class PaymentOptionFragment extends BaseFragment {
         paymentViewModel.getData().observe(requireActivity(), new Observer<ApiResponse>() {
             @Override
             public void onChanged(ApiResponse apiResponse) {
-                Log.d("TEST" , String.valueOf(apiResponse));
+                Log.d("TEST", String.valueOf(apiResponse));
                 listResult = (ListResult) apiResponse.getResponse().body();
                 listResult.getNetworks();
             }
