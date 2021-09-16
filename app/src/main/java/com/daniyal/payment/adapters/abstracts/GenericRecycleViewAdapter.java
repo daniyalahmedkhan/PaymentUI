@@ -19,11 +19,11 @@ public abstract class GenericRecycleViewAdapter<T> extends RecyclerView.Adapter<
 
     protected List<T> list;
     private Context context;
-    private ArrayList<T> mItems;
+    private List<T> mItems;
     // Allows to remember the last item shown on screen
     private int lastPosition = -1;
 
-    public GenericRecycleViewAdapter(Context context, ArrayList<T> items) {
+    public GenericRecycleViewAdapter(Context context, List<T> items) {
         this.context = context;
         this.mItems = items;
         this.list = items;

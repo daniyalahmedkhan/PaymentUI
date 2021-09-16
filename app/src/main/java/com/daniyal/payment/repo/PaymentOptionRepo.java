@@ -1,6 +1,7 @@
 package com.daniyal.payment.repo;
 
-import androidx.lifecycle.LiveData;
+import android.content.Context;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.daniyal.payment.models.ListResult;
@@ -16,21 +17,21 @@ public class PaymentOptionRepo {
     WebService webService = WebServiceFactory.getInstance();
     final MutableLiveData<ApiResponse> apiResponse = new MutableLiveData<>();
 
-    public MutableLiveData<ApiResponse> getPaymentOptions() {
+
+    public MutableLiveData<ApiResponse> getPaymentOptions(Context context) {
 
         Call<ListResult> call = webService.getNetworkListing();
         call.enqueue(new Callback<ListResult>() {
             @Override
             public void onResponse(Call<ListResult> call, Response<ListResult> response) {
 
-                if (response.code() == 200){
-                    apiResponse.postValue(new ApiResponse(response));
-                }
+                apiResponse.postValue(ResponseCodeHandle.extractResponseCode(response , context));
+
             }
 
             @Override
             public void onFailure(Call<ListResult> call, Throwable t) {
-
+                apiResponse.postValue(new ApiResponse(t));
             }
         });
 

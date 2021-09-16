@@ -38,4 +38,6 @@ public class Networks {
     public void setResourcesLastUpdate(Date resourcesLastUpdate) {
         this.resourcesLastUpdate = resourcesLastUpdate;
     }
+
+
 }

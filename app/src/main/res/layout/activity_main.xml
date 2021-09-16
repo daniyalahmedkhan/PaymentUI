@@ -4,14 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     android:orientation="vertical"
     tools:context=".ui.BaseActivity">
 
     <!--Title Bar-->
-    <com.daniyal.payment.ui.views.Toolbar
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/view_toolbar" />
+        app:cardElevation="@dimen/_5sdp">
+
+        <com.daniyal.payment.ui.views.Toolbar
+            android:id="@+id/view_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.cardview.widget.CardView>
 
 
     <!--Container for Fragments-->

@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="PayoneerColor">#FF4800</color>
 
     <!--<color name="colorPrimaryText">#AF000000</color>-->
     <color name="colorPrimaryText">#000000</color>
@@ -14,6 +15,7 @@
     <color name="transparent">#00000000</color>
 
     <color name="black_opaq">#7b000000</color>
+    <color name="grey">#7BE1E1E1</color>
     <color name="blue">#003656</color>
     <!--<color name="app_button_color">#FF9800</color>-->
 

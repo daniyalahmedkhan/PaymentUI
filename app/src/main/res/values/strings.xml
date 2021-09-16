@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PaymentUI</string>
+
+    <string name="notFound">Not Found Request. Unable to Resolve</string>
 </resources>

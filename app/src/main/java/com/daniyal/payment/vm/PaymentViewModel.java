@@ -1,5 +1,7 @@
 package com.daniyal.payment.vm;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -12,16 +14,18 @@ public class PaymentViewModel extends ViewModel {
 
     private PaymentOptionRepo paymentOptionRepo;
     private MutableLiveData<ApiResponse> mutableLiveData;
+    private Context context;
 
-    public PaymentViewModel(){
+    public PaymentViewModel(Context context) {
         paymentOptionRepo = new PaymentOptionRepo();
+        this.context = context;
 
     }
 
-    public LiveData<ApiResponse> getData(){
+    public LiveData<ApiResponse> getData() {
 
-        if (mutableLiveData == null){
-            mutableLiveData = paymentOptionRepo.getPaymentOptions();
+        if (mutableLiveData == null) {
+            mutableLiveData = paymentOptionRepo.getPaymentOptions(context);
         }
 
         //mutableLiveData.setValue(paymentOptionRepo.getPaymentOptions().getValue());

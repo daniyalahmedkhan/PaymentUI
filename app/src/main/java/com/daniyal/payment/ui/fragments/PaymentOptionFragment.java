@@ -7,17 +7,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.daniyal.payment.R;
+import com.daniyal.payment.adapters.PaymentOptionListAdapter;
+import com.daniyal.payment.databinding.PaymentOptionFragmentBinding;
+import com.daniyal.payment.models.ApplicableNetwork;
 import com.daniyal.payment.models.ListResult;
 import com.daniyal.payment.network.WebService;
 import com.daniyal.payment.network.WebServiceFactory;
 import com.daniyal.payment.repo.ApiResponse;
 import com.daniyal.payment.ui.views.Toolbar;
+import com.daniyal.payment.utilities.CommonHelper;
 import com.daniyal.payment.vm.PaymentViewModel;
 
+import java.util.ArrayList;
+
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,6 +36,8 @@ public class PaymentOptionFragment extends BaseFragment {
 
     PaymentViewModel paymentViewModel;
     ListResult listResult;
+    PaymentOptionFragmentBinding binding;
+    PaymentOptionListAdapter paymentOptionListAdapter;
 
     public static PaymentOptionFragment newInstance() {
         return new PaymentOptionFragment();
@@ -36,7 +46,8 @@ public class PaymentOptionFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.payment_card_item, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.payment_option_fragment, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -44,48 +55,34 @@ public class PaymentOptionFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         //paymentViewModel = ViewModelProviders.of(requireActivity()).get(PaymentViewModel.class);
+        bindLinearLayoutManagers(binding.rvPaymentoption, true);
+        // binding.rvPaymentoption.setEmptyView(emptyView);
 
-        paymentViewModel = new PaymentViewModel();
+        paymentViewModel = new PaymentViewModel(getActivity());
 
         paymentViewModel.getData().observe(requireActivity(), new Observer<ApiResponse>() {
             @Override
             public void onChanged(ApiResponse apiResponse) {
-                Log.d("TEST", String.valueOf(apiResponse));
-                listResult = (ListResult) apiResponse.getResponse().body();
-                listResult.getNetworks();
+
+                if (apiResponse.getResponse() != null) {
+                    listResult = (ListResult) apiResponse.getResponse().body();
+                    paymentOptionListAdapter = new PaymentOptionListAdapter(getActivity(), listResult.getNetworks().getApplicable());
+                    binding.rvPaymentoption.setAdapter(paymentOptionListAdapter);
+                } else if (apiResponse.getT() != null) {
+                    Log.d("TEST", apiResponse.getT().toString());
+                } else {
+                    Log.d("TEST", apiResponse.getErrorMessage());
+                }
+
             }
         });
-
-//        WebService webService = WebServiceFactory.getInstance();
-//        Call<ListResult> call = webService.getNetworkListing();
-//
-//        call.enqueue(new Callback<ListResult>() {
-//            @Override
-//            public void onResponse(Call<ListResult> call, Response<ListResult> response) {
-//
-//                if (response.code() == 200){
-//                    Log.d("TEST", String.valueOf(response.body()));
-//                }else if (response.code() == 400){
-//                    Log.d("TEST", String.valueOf(response.body()));
-//                }if (response.code() == 500){
-//                    Log.d("TEST", String.valueOf(response.body()));
-//                }if (response.code() == 404){
-//                    Log.d("TEST", String.valueOf(response.body()));
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ListResult> call, Throwable t) {
-//                Log.d("TEST", String.valueOf(t));
-//            }
-//        });
 
 
     }
 
     @Override
     protected void setTitleBar(Toolbar toolbar) {
-        toolbar.setSubHeading("Toolbar");
-        toolbar.setTitleBarColor(R.color.black);
+        toolbar.setSubHeading(CommonHelper.changeCharColor("Payment Methods", "P", "#FF4800"));
+
     }
 }

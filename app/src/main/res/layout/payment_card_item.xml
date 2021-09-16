@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="3dp"
-    app:cardElevation="3dp"
+    app:cardElevation="2dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -22,42 +23,40 @@
             android:weightSum="4">
 
             <include
+                android:id="@+id/iv_logo"
                 layout="@layout/layout_image"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7" />
 
             <include
+                android:id="@+id/tv_option_name"
                 layout="@layout/layout_payment_option_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2.7" />
 
             <include
+                android:id="@+id/lottie_tick"
                 layout="@layout/layout_lottie_animation"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_weight="0.5" />
+                android:layout_height="@dimen/_35sdp"
+                android:layout_weight="0.5"
+                android:visibility="invisible" />
 
 
         </LinearLayout>
 
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="#9C9C9C" />
+        <include layout="@layout/layout_view" />
 
         <TextView
+            android:id="@+id/tv_method"
             style="@style/TextSubheadingSmallRegular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:text="Credit Card" />
+            android:layout_marginTop="@dimen/_6sdp" />
 
 
     </LinearLayout>

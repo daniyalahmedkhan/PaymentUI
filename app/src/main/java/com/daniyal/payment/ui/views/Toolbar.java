@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.text.Html;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,12 +24,10 @@ import butterknife.ButterKnife;
 
 public class Toolbar extends RelativeLayout {
 
-    @BindView(R.id.imgLeftButton)
-    ImageButton imgLeftButton;
     @BindView(R.id.txtTitle)
     TextView txtTitle;
     @BindView(R.id.contTitlebar)
-    RelativeLayout contTitlebar;
+    LinearLayout contTitlebar;
     private Context context;
 
 
@@ -54,15 +54,12 @@ public class Toolbar extends RelativeLayout {
     private void initAttrs(Context context, AttributeSet attrs) {
     }
 
-    public ImageButton getImgLeftButton() {
-        return imgLeftButton;
-    }
 
     public TextView getTxtTitle() {
         return txtTitle;
     }
 
-    public RelativeLayout getContTitlebar() {
+    public LinearLayout getContTitlebar() {
         return contTitlebar;
     }
 
@@ -74,70 +71,19 @@ public class Toolbar extends RelativeLayout {
     }
 
 
-    public void showSideMenuIcon() {
-        imgLeftButton.setVisibility(View.VISIBLE);
-    }
-
-    public void hideSideMenuIcon() {
-        imgLeftButton.setVisibility(View.GONE);
-    }
-
     public void setSubHeading(String subHeading) {
         getTxtTitle().setVisibility(VISIBLE);
-        getTxtTitle().setText(subHeading + "");
-
-    }
-
-    public void resetTitleBar() {
-
-        getImgLeftButton().setVisibility(INVISIBLE);
-        getImgLeftButton().setImageDrawable(null);
-        getTxtTitle().setVisibility(INVISIBLE);
+        //getTxtTitle().setText(subHeading + "");
+        getTxtTitle().setText(Html.fromHtml(subHeading));
 
 
     }
+
 
     public void setTitleBarColor(int bgColor) {
         getContTitlebar().setBackgroundColor(getResources().getColor(bgColor));
     }
 
-    public void showBackButton(final BaseActivity baseActivity) {
-        getImgLeftButton().setVisibility(VISIBLE);
-        getImgLeftButton().setImageResource(R.mipmap.ic_launcher);
-        getImgLeftButton().setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (baseActivity != null) {
-
-                    baseActivity.onBackPressed();
-                }
-
-            }
-        });
-    }
-
-    public void showLeftButton(int mDrawable, OnClickListener listener) {
-        getImgLeftButton().setVisibility(VISIBLE);
-
-        getImgLeftButton().setImageResource(mDrawable);
-        getImgLeftButton().setOnClickListener(listener);
-    }
-
-    public void showLeftButton(Activity context, int mDrawable, OnClickListener listener) {
-        getImgLeftButton().setVisibility(VISIBLE);
-        Drawable icon;
-        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            icon = VectorDrawableCompat.create(context.getResources(), mDrawable, context.getTheme());
-        } else {
-            icon = context.getResources().getDrawable(mDrawable);
-
-        }
-
-        getImgLeftButton().setImageDrawable(icon);
-//        getImgLeftButton().setImageResource(mDrawable);
-        getImgLeftButton().setOnClickListener(listener);
-    }
 
 
 }

@@ -4,19 +4,27 @@ import retrofit2.Response;
 
 public class ApiResponse {
 
-    public Response response;
-    public Throwable t;
-
+    private Response response;
+    private Throwable t;
+    private String errorMessage;
 
     public ApiResponse(Response response){
         this.response = response;
         this.t = null;
+        this.errorMessage = null;
 
     }
 
     public ApiResponse(Throwable t){
         this.response = null;
         this.t = t;
+        this.errorMessage = null;
+    }
+
+    public ApiResponse(String errorMessage){
+        this.errorMessage = errorMessage;
+        this.response = null;
+        this.t = null;
     }
 
     public Response getResponse() {
@@ -33,5 +41,13 @@ public class ApiResponse {
 
     public void setT(Throwable t) {
         this.t = t;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 }
