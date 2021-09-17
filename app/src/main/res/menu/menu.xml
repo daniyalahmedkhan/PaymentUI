@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/empty"
+        android:icon="@drawable/icon_menu_filter"
+        android:orderInCategory="101"
+        android:title=""
+        app:showAsAction="always">
+
+        <menu>
+
+            <item
+                android:title="@string/DebitCard"
+                app:showAsAction="ifRoom" />
+
+            <item
+                android:title="@string/CreditCard"
+                app:showAsAction="ifRoom" />
+
+            <item
+                android:title="@string/Wallet"
+                app:showAsAction="ifRoom" />
+
+            <item
+                android:title="@string/DirectDebit"
+                app:showAsAction="ifRoom" />
+
+            <item
+                android:title="@string/OpenInvoice"
+                app:showAsAction="ifRoom" />
+
+            <item
+                android:title="@string/OnlineBankTransfer"
+                app:showAsAction="ifRoom" />
+
+
+
+        </menu>
+
+    </item>
+
+</menu>

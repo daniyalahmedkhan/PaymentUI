@@ -17,7 +17,7 @@
     <!--    Font Sizing Revamp-->
     <style name="ToolBarHeading">
         <item name="android:padding">@dimen/_5sdp</item>
-        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:textSize">@dimen/_17sdp</item>
         <item name="android:drawablePadding">@dimen/_4sdp</item>
         <item name="android:gravity">left</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>

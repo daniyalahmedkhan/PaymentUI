@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
 
@@ -29,6 +31,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar.getToolbar_());
         initFragment();
 
     }
@@ -66,6 +69,21 @@ public class BaseActivity extends AppCompatActivity {
 
     public Toolbar getToolbar(){
         return toolbar;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+//        if(id == R.id.menu_new_content_twitter){
+//            // do something
+//        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -1,22 +1,15 @@
 package com.daniyal.payment.ui.views;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
-
 import com.daniyal.payment.R;
-import com.daniyal.payment.ui.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +22,8 @@ public class Toolbar extends RelativeLayout {
     @BindView(R.id.contTitlebar)
     LinearLayout contTitlebar;
     private Context context;
+    @BindView(R.id.toolbar)
+    androidx.appcompat.widget.Toolbar toolbar_;
 
 
     public Toolbar(Context context) {
@@ -63,6 +58,10 @@ public class Toolbar extends RelativeLayout {
         return contTitlebar;
     }
 
+    public androidx.appcompat.widget.Toolbar getToolbar_(){
+        return toolbar_;
+    }
+
     private void initLayout(Context context) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -83,6 +82,8 @@ public class Toolbar extends RelativeLayout {
     public void setTitleBarColor(int bgColor) {
         getContTitlebar().setBackgroundColor(getResources().getColor(bgColor));
     }
+
+
 
 
 

@@ -9,25 +9,26 @@ import retrofit2.Response;
 
 public class ResponseCodeHandle {
 
-    public static ApiResponse extractResponseCode(Response response, Context context) {
+    public static <T> ApiResponse extractResponseCode(Response<T> response, Context context) {
         switch (response.code()) {
             case 200:
                 return new ApiResponse(response);
             case 400:
-                break;
+                return new ApiResponse(context.getResources().getString(R.string.badRequestError));
             case 401:
-                break;
+                return new ApiResponse(context.getResources().getString(R.string.unauthorizedError));
             case 403:
-                break;
+                return new ApiResponse(context.getResources().getString(R.string.forbiddenError));
             case 404:
                 return new ApiResponse(context.getResources().getString(R.string.notFound));
             case 500:
-                break;
+                return new ApiResponse(context.getResources().getString(R.string.serverError));
             case 502:
-                break;
+                return new ApiResponse(context.getResources().getString(R.string.gatewayBadError));
             case 504:
-                break;
+                return new ApiResponse(context.getResources().getString(R.string.gatewayTimeoutError));
+            default:
+                return new ApiResponse(context.getResources().getString(R.string.generalError));
         }
-        return null;
     }
 }

@@ -41,9 +41,9 @@ public class WebServiceFactory {
         /**
          * To avoid time out exception
          */
-        httpclient.connectTimeout(90, TimeUnit.SECONDS)
-                .writeTimeout(90, TimeUnit.SECONDS)
-                .readTimeout(90, TimeUnit.SECONDS);
+        httpclient.connectTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS);
 
         httpclient.addInterceptor(logging);
         httpclient.dispatcher(dispatcher);

@@ -1,6 +1,7 @@
 package com.daniyal.payment.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.daniyal.payment.R;
 import com.daniyal.payment.adapters.abstracts.GenericRecycleViewAdapter;
+import com.daniyal.payment.enums.NetworkMethods;
 import com.daniyal.payment.models.ApplicableNetwork;
 import com.daniyal.payment.utilities.ImageHelper;
 
@@ -25,11 +27,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class PaymentOptionListAdapter extends GenericRecycleViewAdapter<ApplicableNetwork> {
+public class PaymentOptionListAdapter extends GenericRecycleViewAdapter<ApplicableNetwork> implements PaymentOptionListHandler {
 
+    private Context context;
 
     public PaymentOptionListAdapter(Context context, List<ApplicableNetwork> items) {
         super(context, items);
+        this.context = context;
     }
 
     @Override
@@ -43,8 +47,8 @@ public class PaymentOptionListAdapter extends GenericRecycleViewAdapter<Applicab
         ViewHolder vHolder = (ViewHolder) holder;
 
         vHolder.tv_option_name.setText(val.getLabel());
-        vHolder.tv_method.setText(val.getMethod());
-        ImageHelper.loadNetworkImage(vHolder.iv_logo, val.getLinks().get("logo"));
+        vHolder.tv_method.setText(returnValidNetworkMethod(val.getMethod()));
+        ImageHelper.loadNetworkImage(vHolder.iv_logo, ImageHelper.getLogo(val.getLinks(), context));
 
         if (val.isClicked()) {
             vHolder.lottie_tick.setVisibility(View.VISIBLE);
@@ -56,11 +60,28 @@ public class PaymentOptionListAdapter extends GenericRecycleViewAdapter<Applicab
         vHolder.cv_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                falseOtherSelected();
+                falsePreviousSelectedItems();
                 val.setClicked(true);
                 notifyDataSetChanged();
             }
         });
+
+    }
+
+    @Override
+    public void falsePreviousSelectedItems() {
+        for (ApplicableNetwork a : list) {
+            a.setClicked(false);
+        }
+    }
+
+    @Override
+    public String returnValidNetworkMethod(String methodName) {
+        try {
+            return NetworkMethods.getMethods(NetworkMethods.valueOf(methodName), context);
+        } catch (Exception e) {
+            return context.getString(R.string.Others);
+        }
 
     }
 
@@ -84,12 +105,5 @@ public class PaymentOptionListAdapter extends GenericRecycleViewAdapter<Applicab
 
         }
     }
-
-    private void falseOtherSelected() {
-        for (ApplicableNetwork a : list) {
-            a.setClicked(false);
-        }
-    }
-
 
 }

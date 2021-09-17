@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.daniyal.payment.R;
 import com.daniyal.payment.adapters.PaymentOptionListAdapter;
 import com.daniyal.payment.databinding.PaymentOptionFragmentBinding;
@@ -20,7 +21,9 @@ import com.daniyal.payment.network.WebService;
 import com.daniyal.payment.network.WebServiceFactory;
 import com.daniyal.payment.repo.ApiResponse;
 import com.daniyal.payment.ui.views.Toolbar;
+import com.daniyal.payment.utilities.AppConstants;
 import com.daniyal.payment.utilities.CommonHelper;
+import com.daniyal.payment.utilities.UIHelper;
 import com.daniyal.payment.vm.PaymentViewModel;
 
 import java.util.ArrayList;
@@ -34,10 +37,9 @@ import retrofit2.Response;
 
 public class PaymentOptionFragment extends BaseFragment {
 
-    PaymentViewModel paymentViewModel;
-    ListResult listResult;
-    PaymentOptionFragmentBinding binding;
-    PaymentOptionListAdapter paymentOptionListAdapter;
+    private ListResult listResult;
+    private PaymentOptionFragmentBinding binding;
+    private PaymentOptionListAdapter paymentOptionListAdapter;
 
     public static PaymentOptionFragment newInstance() {
         return new PaymentOptionFragment();
@@ -54,24 +56,27 @@ public class PaymentOptionFragment extends BaseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //paymentViewModel = ViewModelProviders.of(requireActivity()).get(PaymentViewModel.class);
         bindLinearLayoutManagers(binding.rvPaymentoption, true);
-        // binding.rvPaymentoption.setEmptyView(emptyView);
+        shimmerEffect(binding.shimmerViewContainer, true);
 
-        paymentViewModel = new PaymentViewModel(getActivity());
 
+        PaymentViewModel paymentViewModel = new PaymentViewModel(getActivity());
         paymentViewModel.getData().observe(requireActivity(), new Observer<ApiResponse>() {
             @Override
             public void onChanged(ApiResponse apiResponse) {
+                shimmerEffect(binding.shimmerViewContainer, false);
 
                 if (apiResponse.getResponse() != null) {
                     listResult = (ListResult) apiResponse.getResponse().body();
                     paymentOptionListAdapter = new PaymentOptionListAdapter(getActivity(), listResult.getNetworks().getApplicable());
                     binding.rvPaymentoption.setAdapter(paymentOptionListAdapter);
+
+
                 } else if (apiResponse.getT() != null) {
-                    Log.d("TEST", apiResponse.getT().toString());
+                    UIHelper.showDialog(getActivity());
                 } else {
-                    Log.d("TEST", apiResponse.getErrorMessage());
+                    UIHelper.showDialog(getActivity());
+
                 }
 
             }
@@ -82,7 +87,7 @@ public class PaymentOptionFragment extends BaseFragment {
 
     @Override
     protected void setTitleBar(Toolbar toolbar) {
-        toolbar.setSubHeading(CommonHelper.changeCharColor("Payment Methods", "P", "#FF4800"));
+        toolbar.setSubHeading(CommonHelper.changeCharColor(getResources().getString(R.string.toolbar_title), AppConstants.PayoneerCharToBeChanged, AppConstants.PayoneerColor));
 
     }
 }
