@@ -10,6 +10,8 @@ JAVA 100% (As requirement)
 Retrofit  
 MVVM --- M [Repository Pattern] V [Live Data & Data Binding] VM [ViewModel]  
 Data Binding  
+ViewModel Testing  
+UI Testing  
 
 # App Features
 
@@ -25,4 +27,5 @@ Data Binding
 ![Screenshot_1631969589](https://user-images.githubusercontent.com/16830594/133892443-87909cfb-429b-4350-b5a3-3a3edfc094a2.png)
 
 
-
+# APK Link (Google Drive)
+https://drive.google.com/file/d/1foewl0IsjAVRdlV1tbLpGOKP1Lg0III5/view?usp=sharing
