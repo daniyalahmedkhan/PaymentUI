@@ -2,7 +2,7 @@
 Android simple application to fetch payment methods through API and shows in list.  
 
 # Tech and Architecture 
-Using Modern Android Development practices. Implemented MVVM-Clean Architecture. Repository pattern for data  
+Using Modern Android Development practices. Implemented MVVM-Clean Architecture. Repository pattern for data.  
 Android MVVM (Model, View, ViewModel) google most recommended arch to make roboust application and separate things that make testing (Unit,UI) easily.
 
 # How it built
