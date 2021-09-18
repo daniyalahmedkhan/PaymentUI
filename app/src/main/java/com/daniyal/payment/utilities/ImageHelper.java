@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+/* This class is helper to load images and caching images in future */
 public class ImageHelper {
 
     public static void loadNetworkImage(ImageView imageView, String url) {

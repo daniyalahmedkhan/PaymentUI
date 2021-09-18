@@ -31,13 +31,16 @@ public abstract class BaseFragment extends Fragment {
         setTitleBar(getBaseActivity().getToolbar());
     }
 
+    /* Toolbar */
     abstract protected void setTitleBar(Toolbar toolbar);
 
-
+    /* Get BaseActivity */
     protected BaseActivity getBaseActivity() {
         return (BaseActivity) getActivity();
     }
 
+    /*
+     * RecyclerView manager method */
     protected void bindLinearLayoutManagers(RecyclerView myRecyclerView, boolean isVerticalOrientation) {
         myRecyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getBaseActivity(), isVerticalOrientation == true ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL, false);
@@ -45,6 +48,9 @@ public abstract class BaseFragment extends Fragment {
         myRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
+    /*
+     * To show shimmer effect on loading
+     * */
     protected void shimmerEffect(ShimmerFrameLayout shimmer, boolean isVisible) {
         if (isVisible) {
             shimmer.setVisibility(View.VISIBLE);
@@ -56,16 +62,5 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
-    protected void showLottieAnimation(LottieAnimationView lottieAnimationView, int name){
-        lottieAnimationView.setAnimation(name);
-        lottieAnimationView.setVisibility(View.VISIBLE);
-        lottieAnimationView.playAnimation();
-
-    }
-
-
-    protected void hideLottieAnimation(LottieAnimationView lottieAnimationView){
-        lottieAnimationView.setVisibility(View.GONE);
-    }
 
 }

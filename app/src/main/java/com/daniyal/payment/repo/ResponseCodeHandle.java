@@ -7,6 +7,8 @@ import com.daniyal.payment.R;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
 
+
+/*This class is responsible to handle api response code also body and errors */
 public class ResponseCodeHandle {
 
     public static <T> ApiResponse extractResponseCode(Response<T> response, Context context) {

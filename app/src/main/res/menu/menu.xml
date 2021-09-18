@@ -12,29 +12,34 @@
         <menu>
 
             <item
+                android:id="@+id/debitCard"
                 android:title="@string/DebitCard"
                 app:showAsAction="ifRoom" />
 
             <item
+                android:id="@+id/creditCard"
                 android:title="@string/CreditCard"
                 app:showAsAction="ifRoom" />
 
             <item
+                android:id="@+id/wallet"
                 android:title="@string/Wallet"
                 app:showAsAction="ifRoom" />
 
             <item
+                android:id="@+id/directDebit"
                 android:title="@string/DirectDebit"
                 app:showAsAction="ifRoom" />
 
             <item
+                android:id="@+id/openInvoice"
                 android:title="@string/OpenInvoice"
                 app:showAsAction="ifRoom" />
 
             <item
+                android:id="@+id/onlineTransfer"
                 android:title="@string/OnlineBankTransfer"
                 app:showAsAction="ifRoom" />
-
 
 
         </menu>

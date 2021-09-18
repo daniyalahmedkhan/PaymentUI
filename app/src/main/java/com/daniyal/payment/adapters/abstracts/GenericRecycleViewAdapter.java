@@ -66,7 +66,7 @@ public abstract class GenericRecycleViewAdapter<T> extends RecyclerView.Adapter<
         }
     }
 
-    public void addItems(ArrayList<T> savedCardItemz) {
+    public void addItems(List<T> savedCardItemz) {
         mItems = savedCardItemz;
         this.notifyDataSetChanged();
     }

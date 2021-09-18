@@ -14,7 +14,8 @@
         android:theme="@style/Theme.PaymentUI">
         <activity
             android:name=".ui.BaseActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

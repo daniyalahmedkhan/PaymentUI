@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.daniyal.payment.R;
 import com.daniyal.payment.adapters.abstracts.GenericRecycleViewAdapter;
+import com.daniyal.payment.callbacks.FilterResultsCallback;
 import com.daniyal.payment.enums.NetworkMethods;
 import com.daniyal.payment.models.ApplicableNetwork;
 import com.daniyal.payment.utilities.ImageHelper;
@@ -20,19 +22,25 @@ import com.daniyal.payment.utilities.ImageHelper;
 import org.w3c.dom.Text;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
+/* This adapter is responsible to bind the data in list */
 public class PaymentOptionListAdapter extends GenericRecycleViewAdapter<ApplicableNetwork> implements PaymentOptionListHandler {
 
-    private Context context;
+    private final Context context;
+    private List<ApplicableNetwork> filteritems;
+    private final List<ApplicableNetwork> items;
+    private FilterResultsCallback filterResultsCallback;
 
-    public PaymentOptionListAdapter(Context context, List<ApplicableNetwork> items) {
+    public PaymentOptionListAdapter(Context context, List<ApplicableNetwork> items, FilterResultsCallback filterResultsCallback) {
         super(context, items);
+        this.items = items;
+        this.filterResultsCallback = filterResultsCallback;
         this.context = context;
     }
 
@@ -83,6 +91,50 @@ public class PaymentOptionListAdapter extends GenericRecycleViewAdapter<Applicab
             return context.getString(R.string.Others);
         }
 
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    filteritems = items;
+                } else {
+                    ArrayList<ApplicableNetwork> filteredList = new ArrayList<>();
+                    for (ApplicableNetwork row : items) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.getMethod() != null) {
+                            if (row.getMethod().toLowerCase().contains(charString.toLowerCase())
+
+                            ) {
+                                filteredList.add(row);
+                            }
+                        }
+
+                    }
+
+                    filteritems = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteritems;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+
+                filteritems = (ArrayList<ApplicableNetwork>) filterResults.values;
+                addItems(filteritems);
+                notifyDataSetChanged();
+
+                filterResultsCallback.onPublish(((ArrayList<ApplicableNetwork>) filterResults.values).size());
+            }
+        };
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

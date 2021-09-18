@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.daniyal.payment.R;
 
+/* Enum to handle all methods types at one place. This is responsible of sorting lists and showing text in readable format */
 public enum NetworkMethods {
     CREDIT_CARD,
     DEBIT_CARD,

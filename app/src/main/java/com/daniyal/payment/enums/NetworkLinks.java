@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import java.net.URL;
 import java.util.HashMap;
 
+/* This enum will help to get keys of { Map<String, URL> links } after network api */
 public enum NetworkLinks {
     LOGO("logo"),
     self("self"),
@@ -17,7 +18,7 @@ public enum NetworkLinks {
 
     private String linkName;
 
-     NetworkLinks(String linkName) {
+    NetworkLinks(String linkName) {
         this.linkName = linkName;
     }
 

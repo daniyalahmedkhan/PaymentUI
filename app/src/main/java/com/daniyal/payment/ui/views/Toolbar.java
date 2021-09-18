@@ -14,7 +14,7 @@ import com.daniyal.payment.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
+/* Separate Custom Toolbar view to include in fragment */
 public class Toolbar extends RelativeLayout {
 
     @BindView(R.id.txtTitle)

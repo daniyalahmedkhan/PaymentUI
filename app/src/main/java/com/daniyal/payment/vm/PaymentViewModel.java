@@ -10,11 +10,12 @@ import com.daniyal.payment.models.ListResult;
 import com.daniyal.payment.repo.ApiResponse;
 import com.daniyal.payment.repo.PaymentOptionRepo;
 
+/* This class OR viewModel to get payment methods list from repo */
 public class PaymentViewModel extends ViewModel {
 
-    private PaymentOptionRepo paymentOptionRepo;
+    private final PaymentOptionRepo paymentOptionRepo;
     private MutableLiveData<ApiResponse> mutableLiveData;
-    private Context context;
+    private final Context context;
 
     public PaymentViewModel(Context context) {
         paymentOptionRepo = new PaymentOptionRepo();
@@ -28,7 +29,6 @@ public class PaymentViewModel extends ViewModel {
             mutableLiveData = paymentOptionRepo.getPaymentOptions(context);
         }
 
-        //mutableLiveData.setValue(paymentOptionRepo.getPaymentOptions().getValue());
         return mutableLiveData;
 
     }

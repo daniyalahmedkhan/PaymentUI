@@ -2,26 +2,27 @@ package com.daniyal.payment.repo;
 
 import retrofit2.Response;
 
+/*This class is to handle network response after successful OR failure */
 public class ApiResponse {
 
     private Response response;
     private Throwable t;
     private String errorMessage;
 
-    public ApiResponse(Response response){
+    public ApiResponse(Response response) {
         this.response = response;
         this.t = null;
         this.errorMessage = null;
 
     }
 
-    public ApiResponse(Throwable t){
+    public ApiResponse(Throwable t) {
         this.response = null;
         this.t = t;
         this.errorMessage = null;
     }
 
-    public ApiResponse(String errorMessage){
+    public ApiResponse(String errorMessage) {
         this.errorMessage = errorMessage;
         this.response = null;
         this.t = null;

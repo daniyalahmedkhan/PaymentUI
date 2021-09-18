@@ -4,6 +4,9 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import java.net.InetAddress;
+
+/* This class is common helper for one time using methods */
 public class CommonHelper {
 
     public static String changeCharColor (String str, String textToBeColored, String color){
@@ -32,5 +35,7 @@ public class CommonHelper {
         }
         return false;
     }
+
+
 
 }

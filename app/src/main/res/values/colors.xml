@@ -13,6 +13,7 @@
     <color name="colorPrimaryText">#000000</color>
     <color name="colorSecondaryText">#82000000</color>
     <color name="transparent">#00000000</color>
+    <color name="colorDialog">#fff</color>
 
     <color name="black_opaq">#7b000000</color>
     <color name="grey">#7BE1E1E1</color>

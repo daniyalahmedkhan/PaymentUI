@@ -6,7 +6,7 @@
     android:layout_marginLeft="@dimen/_20sdp"
     android:layout_marginRight="@dimen/_20sdp"
     android:background="@drawable/rounded_layout"
-    android:backgroundTint="@color/white"
+    android:backgroundTint="@color/colorDialog"
     android:orientation="vertical"
     android:paddingTop="@dimen/_5sdp"
     android:paddingBottom="@dimen/_10sdp">
@@ -21,14 +21,13 @@
 
 
         <TextView
-            android:id="@+id/TV_Ref"
+            android:id="@+id/tv_msg"
             style="@style/TextSubheadingRegular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             android:gravity="center"
-            android:justificationMode="inter_word"
-            android:text="Something Went Wrong. Try Again Later" />
+            android:justificationMode="inter_word" />
 
 
         <com.airbnb.lottie.LottieAnimationView

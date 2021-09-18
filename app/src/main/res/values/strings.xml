@@ -27,4 +27,9 @@
     <string name="DirectDebit">Direct Debit</string>
     <string name="Others">Others"</string>
 
+
+
+    <string name="WentWrong">Something Went Wrong. Try Again Later"</string>
+    <string name="NoInternet">No Internet Connectivity"</string>
+
 </resources>

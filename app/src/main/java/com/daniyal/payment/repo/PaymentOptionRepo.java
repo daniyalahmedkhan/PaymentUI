@@ -13,6 +13,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/* This class will make the network call to fetch data and post to VM */
 public class PaymentOptionRepo {
 
     WebService webService = WebServiceFactory.getInstance();

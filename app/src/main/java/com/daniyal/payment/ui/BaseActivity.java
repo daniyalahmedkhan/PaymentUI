@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.AlphaAnimation;
@@ -17,6 +18,7 @@ import com.daniyal.payment.ui.views.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/* BaseActivity having toolbar , fragment dock and pop and menu integration */
 public class BaseActivity extends AppCompatActivity {
 
     public static final String KEY_FRAG_FIRST = "firstFrag";
@@ -45,7 +47,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onResume();
     }
 
-    private void initFragment(){
+    private void initFragment() {
         addDockableFragment(PaymentOptionFragment.newInstance());
     }
 
@@ -67,7 +69,18 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    public Toolbar getToolbar(){
+    /**
+     * Pop Fragment from backStack
+     */
+    public void popFragment() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public Toolbar getToolbar() {
         return toolbar;
     }
 
@@ -80,10 +93,12 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-//        if(id == R.id.menu_new_content_twitter){
-//            // do something
-//        }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        popFragment();
+    }
 }
