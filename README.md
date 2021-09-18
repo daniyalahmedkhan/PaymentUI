@@ -19,7 +19,7 @@ Data Binding
 ![Screenshot_1631969805](https://user-images.githubusercontent.com/16830594/133892363-00e94250-b0bc-4d79-87f6-fa6d037f5662.png)
 
 # DARK MODE
-![Screenshot_1631872945](https://user-images.githubusercontent.com/16830594/133892437-be06df3c-8429-4f50-ab56-7e68916f7462.png)
+![Screenshot_1631969451](https://user-images.githubusercontent.com/16830594/133892583-98e729ec-cc8e-4f1e-9b31-06cacb90e82b.png)
 ![Screenshot_1631969428](https://user-images.githubusercontent.com/16830594/133892438-92c17965-971a-4120-a9a8-1853ca06adb3.png)
 ![Screenshot_1631969434](https://user-images.githubusercontent.com/16830594/133892440-592683c1-4374-4c95-8273-5b027a405acd.png)
 ![Screenshot_1631969589](https://user-images.githubusercontent.com/16830594/133892443-87909cfb-429b-4350-b5a3-3a3edfc094a2.png)
