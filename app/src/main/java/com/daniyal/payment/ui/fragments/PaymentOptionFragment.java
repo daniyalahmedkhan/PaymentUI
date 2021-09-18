@@ -47,6 +47,7 @@ public class PaymentOptionFragment extends BaseFragment {
     private PaymentOptionFragmentBinding binding;
     private PaymentOptionListAdapter paymentOptionListAdapter;
     PaymentViewModel paymentViewModel;
+    public final String Exception = "EXCEPTION_LOGS";
 
     public static PaymentOptionFragment newInstance() {
         return new PaymentOptionFragment();
@@ -79,14 +80,18 @@ public class PaymentOptionFragment extends BaseFragment {
                     listResult = (ListResult) apiResponse.getResponse().body();
                     paymentOptionListAdapter = new PaymentOptionListAdapter(getActivity(), listResult.getNetworks().getApplicable(), new FilterResultsCallback() {
                         @Override
-                        public void onPublish(int filterResults) {}});
+                        public void onPublish(int filterResults) {
+                        }
+                    });
 
                     binding.rvPaymentoption.setAdapter(paymentOptionListAdapter);
 
 
                 } else if (apiResponse.getT() != null) {
+                    Log.d(Exception, apiResponse.getT().toString());
                     UIHelper.showDialog(getActivity(), getResources().getString(R.string.WentWrong));
                 } else {
+                    Log.d(Exception, String.valueOf(apiResponse.getErrorMessage()));
                     UIHelper.showDialog(getActivity(), getResources().getString(R.string.WentWrong));
 
                 }
